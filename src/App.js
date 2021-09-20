@@ -41,6 +41,7 @@ function App() {
           <input value={state} onChange={(e) => setState(e.target.value)} />
           <p>{state}</p>
         </div>
+        <button>Enter</button>
       </form>
     </div>
   );
