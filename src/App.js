@@ -25,9 +25,14 @@ function App() {
 
     getStatus();
   }, []);
-  onSubmit(){
-
-  }
+  onSubmit = async (e) => {
+    e.preventDefault();
+    const accounts = await web3.eth.getAccounts();
+    await lottery.methods.enter().send({
+      from: accounts[0],
+      value: web3.utils.fromWei(value, "ether"),
+    });
+  };
   return (
     <div>
       <h2>Lottery Contract</h2>
