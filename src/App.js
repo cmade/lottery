@@ -25,6 +25,9 @@ function App() {
 
     getStatus();
   }, []);
+  onSubmit(){
+
+  }
   return (
     <div>
       <h2>Lottery Contract</h2>
@@ -34,7 +37,7 @@ function App() {
         {web3.utils.fromWei(balance, "ether")} ether.
       </p>
       <hr />
-      <form>
+      <form onSubmit={onSubmit}>
         <h4>Want to try your luck?</h4>
         <div>
           <label>Amount of ether to enter</label>
