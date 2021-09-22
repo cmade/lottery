@@ -17,10 +17,11 @@ function App() {
       let manager = await lottery.methods.manager().call();
       let players = await lottery.methods.getPlayers().call();
       let balance = await web3.eth.getBalance(lottery.options.address);
-      console.log(typeof balance);
+
       managerState(manager);
       playersState(players);
       balanceState(balance);
+
       console.log(web3.utils.fromWei(balance, "ether"));
     };
 
@@ -34,6 +35,14 @@ function App() {
       value: web3.utils.toWei(value, "ether"),
     });
     messageState("You have been entered!!");
+  };
+  let onClick = async () => {
+    const accounts = await web3.eth.getAccounts();
+    messageState("Waiting on transaction success...");
+    await lottery.methods.pickWinner().send({ from: accounts[0] });
+    const winner = await lottery.methods.getWinner().call();
+    console.log(winner + "winner");
+    messageState(winner + " has won " + balance + " ether.");
   };
   return (
     <div>
@@ -53,6 +62,10 @@ function App() {
         </div>
         <button>Enter</button>
       </form>
+      <hr />
+
+      <h4>Ready to pick a winner?</h4>
+      <button onClick={onClick}>Pick a winner!</button>
       <hr />
       <h1>{message}</h1>
     </div>

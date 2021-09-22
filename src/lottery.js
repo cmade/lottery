@@ -1,5 +1,5 @@
 import web3 from "./web3";
-const address = "0x0e306B12ea1af435c0B89431B376871925080E00";
+const address = "0xe01a26Cb554a480E4CFe7bF87B4e5514C164E155";
 const abi = [
   {
     constant: true,
@@ -38,6 +38,15 @@ const abi = [
     type: "function",
   },
   {
+    constant: true,
+    inputs: [],
+    name: "getWinner",
+    outputs: [{ name: "", type: "address" }],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     constant: false,
     inputs: [],
     name: "enter",
@@ -50,6 +59,15 @@ const abi = [
     constant: true,
     inputs: [{ name: "", type: "uint256" }],
     name: "players",
+    outputs: [{ name: "", type: "address" }],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: "lastWinner",
     outputs: [{ name: "", type: "address" }],
     payable: false,
     stateMutability: "view",
